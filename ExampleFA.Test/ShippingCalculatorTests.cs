@@ -18,7 +18,7 @@ namespace ExampleFA.Test
             var expectedCost = 3.0m;
             await calc.ApplyCost(smallParcel);
 
-            Assert.Equals(smallParcel.ShippingCost, expectedCost);
+            Assert.AreEqual(smallParcel.ShippingCost, expectedCost);
         }
 
         [TestMethod]
@@ -48,7 +48,7 @@ namespace ExampleFA.Test
             var expectedCost = 8.0m;
             await calc.ApplyCost(smallParcel);
 
-            Assert.Equals(smallParcel.ShippingCost, expectedCost);
+            Assert.AreEqual(smallParcel.ShippingCost, expectedCost);
         }
 
         [TestMethod]
@@ -63,7 +63,7 @@ namespace ExampleFA.Test
             var expectedCost = 15.0m;
             await calc.ApplyCost(smallParcel);
 
-            Assert.Equals(smallParcel.ShippingCost, expectedCost);
+            Assert.AreEqual(smallParcel.ShippingCost, expectedCost);
         }
 
         [TestMethod]
@@ -78,7 +78,7 @@ namespace ExampleFA.Test
             var expectedCost = 25.0m;
             await calc.ApplyCost(smallParcel);
 
-            Assert.Equals(smallParcel.ShippingCost, expectedCost);
+            Assert.AreEqual(smallParcel.ShippingCost, expectedCost);
         }
     }
 }
