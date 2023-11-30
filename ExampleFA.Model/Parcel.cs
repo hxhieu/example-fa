@@ -14,6 +14,9 @@ namespace ExampleFA.Model
         /// </summary>
         public Vector3 Dimension { get; set; }
 
+        /// <summary>
+        /// Null means not been calculated yet
+        /// </summary>
         public decimal? ShippingCost { get; set; }
 
         // Size helpers

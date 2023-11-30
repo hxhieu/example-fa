@@ -18,26 +18,30 @@ namespace ExampleFA.Test
                 },
                 new Parcel
                 {
-                    Id = "id-1",
+                    Id = "id-2",
                     ShippingCost = 8.0m,
                 },
                 new Parcel
                 {
-                    Id = "id-1",
+                    Id = "id-3",
                     ShippingCost = 15.0m,
                 }
             };
 
-            var expectedOutput = new Dictionary<string,float>
+            var expectedOutput = new ShippingCostLayout
             {
-                {"id-1", 3.0f },
-                {"id-2", 8.0f },
-                {"id-3", 15.0f },
+                Items =  new Dictionary<string,decimal?>
+                {
+                    {"id-1", 3.0m },
+                    {"id-2", 8.0m },
+                    {"id-3", 15.0m },
+                }
             };
 
             var actualOutput = await printer.PrintShippingCost(parcels);
 
-            CollectionAssert.AreEquivalent(actualOutput, expectedOutput);
+            Assert.AreEqual(expectedOutput.Total, actualOutput.Total);
+            CollectionAssert.AreEquivalent(actualOutput.Items, expectedOutput.Items);
         }
     }
 }
