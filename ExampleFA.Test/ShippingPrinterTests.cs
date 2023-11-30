@@ -14,17 +14,17 @@ namespace ExampleFA.Test
                 new Parcel
                 {
                     Id = "id-1",
-                    ShippingCost = 3.0f,
+                    ShippingCost = 3.0m,
                 },
                 new Parcel
                 {
                     Id = "id-1",
-                    ShippingCost = 8.0f,
+                    ShippingCost = 8.0m,
                 },
                 new Parcel
                 {
                     Id = "id-1",
-                    ShippingCost = 15.0f,
+                    ShippingCost = 15.0m,
                 }
             };
 
