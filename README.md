@@ -5,3 +5,4 @@ Due to the scope of this quick exercise, the following assumptions are fully awa
 - Only small amount of test cases
   - Should only cover some happy paths
   - May only has one fail case, per service
+- The whole process relies on the nullable `decimal?` data type to respresent the shipping cost, so if this value is `null` then the shipping has not been calculated.

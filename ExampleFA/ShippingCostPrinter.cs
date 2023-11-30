@@ -5,9 +5,12 @@ namespace ExampleFA
 {
     public class ShippingCostPrinter : IShippingCostPrinter
     {
-        public Task<Dictionary<string, float>> PrintShippingCost (params Parcel[] parcels)
+        public Task<ShippingCostLayout> PrintShippingCost (params Parcel[] parcels)
         {
-            throw new NotImplementedException();
+            return Task.FromResult(new ShippingCostLayout
+            {
+                Items = parcels.ToDictionary(x => x.Id, x => x.ShippingCost)
+            });
         }
     }
 }

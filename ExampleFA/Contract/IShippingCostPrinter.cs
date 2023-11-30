@@ -9,6 +9,6 @@ namespace ExampleFA.Contract
         /// </summary>
         /// <param name="parcels"></param>
         /// <returns></returns>
-        Task<Dictionary<string, float>> PrintShippingCost (params Parcel[] parcels);
+        Task<ShippingCostLayout> PrintShippingCost (params Parcel[] parcels);
     }
 }
