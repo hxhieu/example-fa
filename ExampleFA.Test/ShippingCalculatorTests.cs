@@ -15,7 +15,7 @@ namespace ExampleFA.Test
                 Id = Guid.NewGuid().ToString(),
                 Dimension = new Vector3(5,5,5),
             };
-            var expectedCost = 3.0;
+            var expectedCost = 3.0m;
             await calc.ApplyCost(smallParcel);
 
             Assert.Equals(smallParcel.ShippingCost, expectedCost);
@@ -30,7 +30,7 @@ namespace ExampleFA.Test
                 Id = Guid.NewGuid().ToString(),
                 Dimension = new Vector3(5,5,15),
             };
-            var expectedCost = 3.0;
+            var expectedCost = 3.0m;
             await calc.ApplyCost(smallParcel);
 
             Assert.AreNotEqual(smallParcel.ShippingCost, expectedCost);
@@ -45,7 +45,7 @@ namespace ExampleFA.Test
                 Id = Guid.NewGuid().ToString(),
                 Dimension = new Vector3(45,15,25),
             };
-            var expectedCost = 8.0;
+            var expectedCost = 8.0m;
             await calc.ApplyCost(smallParcel);
 
             Assert.Equals(smallParcel.ShippingCost, expectedCost);
@@ -60,7 +60,7 @@ namespace ExampleFA.Test
                 Id = Guid.NewGuid().ToString(),
                 Dimension = new Vector3(50,15,25),
             };
-            var expectedCost = 15.0;
+            var expectedCost = 15.0m;
             await calc.ApplyCost(smallParcel);
 
             Assert.Equals(smallParcel.ShippingCost, expectedCost);
@@ -75,7 +75,7 @@ namespace ExampleFA.Test
                 Id = Guid.NewGuid().ToString(),
                 Dimension = new Vector3(110,100,50),
             };
-            var expectedCost = 25.0;
+            var expectedCost = 25.0m;
             await calc.ApplyCost(smallParcel);
 
             Assert.Equals(smallParcel.ShippingCost, expectedCost);
