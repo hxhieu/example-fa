@@ -1,3 +1,5 @@
+using ExampleFA.Calculator;
+using ExampleFA.Contract;
 using ExampleFA.Model;
 using System.Numerics;
 
@@ -6,10 +8,15 @@ namespace ExampleFA.Test
     [TestClass]
     public class ShippingCalculatorTests
     {
+        IEnumerable<ICostCalculator<CostType>> _defaultCalculators = new List<ICostCalculator<CostType>>
+        {
+            new SizeCostCalculator()
+        };
+
         [TestMethod]
         public async Task ShippingCalculator_SmallParcel_True ()
         {
-            var calc = new ShippingCostCalculator();
+            var calc = new ShippingCostCalculator(_defaultCalculators);
             var smallParcel = new Parcel
             {
                 Id = Guid.NewGuid().ToString(),
@@ -24,7 +31,7 @@ namespace ExampleFA.Test
         [TestMethod]
         public async Task ShippingCalculator_SmallParcel_NotAllDimensions ()
         {
-            var calc = new ShippingCostCalculator();
+            var calc = new ShippingCostCalculator(_defaultCalculators);
             var smallParcel = new Parcel
             {
                 Id = Guid.NewGuid().ToString(),
@@ -39,7 +46,7 @@ namespace ExampleFA.Test
         [TestMethod]
         public async Task ShippingCalculator_MediumParcel_True ()
         {
-            var calc = new ShippingCostCalculator();
+            var calc = new ShippingCostCalculator(_defaultCalculators);
             var smallParcel = new Parcel
             {
                 Id = Guid.NewGuid().ToString(),
@@ -54,7 +61,7 @@ namespace ExampleFA.Test
         [TestMethod]
         public async Task ShippingCalculator_LargeParcel_True ()
         {
-            var calc = new ShippingCostCalculator();
+            var calc = new ShippingCostCalculator(_defaultCalculators);
             var smallParcel = new Parcel
             {
                 Id = Guid.NewGuid().ToString(),
@@ -69,7 +76,7 @@ namespace ExampleFA.Test
         [TestMethod]
         public async Task ShippingCalculator_XLParcel_True ()
         {
-            var calc = new ShippingCostCalculator();
+            var calc = new ShippingCostCalculator(_defaultCalculators);
             var smallParcel = new Parcel
             {
                 Id = Guid.NewGuid().ToString(),
