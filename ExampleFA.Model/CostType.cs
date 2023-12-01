@@ -4,6 +4,7 @@
     {
         Default,
         Speedy,
-        Overweight
+        Overweight,
+        Discount
     }
 }
