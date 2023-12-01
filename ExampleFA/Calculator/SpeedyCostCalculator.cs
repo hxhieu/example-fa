@@ -10,13 +10,14 @@ namespace ExampleFA.Calculator
             foreach (var parcel in parcels)
             {
                 var sizeCost = parcel.Costs[CostType.Default];
-                // Missing default cost or not using Speedy
-                if (sizeCost == null || !parcel.UseSpeedy)
+                // Missing default cost
+                if (sizeCost == null)
                 {
                     parcel.Costs.Add(CostType.Speedy, null);
                     continue;
                 }
-                parcel.Costs.Add(CostType.Speedy, sizeCost);
+                // Make sure the calculator always populate the CostType.Speedy
+                parcel.Costs.Add(CostType.Speedy, parcel.UseSpeedy ? sizeCost : 0);
             }
 
             return Task.CompletedTask;

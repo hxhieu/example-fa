@@ -26,7 +26,7 @@ namespace ExampleFA.Test
             var expectedCost = new Dictionary<CostType,decimal?>
             {
                 { CostType.Default, SizeCostCalculator.SMALL_PARCEL_COST },
-                { CostType.Speedy, null },
+                { CostType.Speedy, 0 },
             };
             await calc.ApplyCost(parcel);
 
@@ -65,7 +65,7 @@ namespace ExampleFA.Test
             var expectedCost = new Dictionary<CostType,decimal?>
             {
                 { CostType.Default, SizeCostCalculator.MEDIUM_PARCEL_COST },
-                { CostType.Speedy, null },
+                { CostType.Speedy, 0 },
             };
             await calc.ApplyCost(parcel);
 
@@ -84,7 +84,7 @@ namespace ExampleFA.Test
             var expectedCost = new Dictionary<CostType,decimal?>
             {
                 { CostType.Default, SizeCostCalculator.MEDIUM_PARCEL_COST },
-                { CostType.Speedy, null },
+                { CostType.Speedy, 0 },
             };
             await calc.ApplyCost(parcel);
 
@@ -103,7 +103,7 @@ namespace ExampleFA.Test
             var expectedCost = new Dictionary<CostType,decimal?>
             {
                 { CostType.Default, SizeCostCalculator.LARGE_PARCEL_COST },
-                { CostType.Speedy, null },
+                { CostType.Speedy, 0 },
             };
             await calc.ApplyCost(parcel);
 
@@ -122,7 +122,7 @@ namespace ExampleFA.Test
             var expectedCost = new Dictionary<CostType,decimal?>
             {
                 { CostType.Default, SizeCostCalculator.XL_PARCEL_COST },
-                { CostType.Speedy, null },
+                { CostType.Speedy, 0 },
             };
             await calc.ApplyCost(parcel);
 
