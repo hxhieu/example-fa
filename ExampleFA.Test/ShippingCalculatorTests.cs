@@ -13,6 +13,7 @@ namespace ExampleFA.Test
             new SizeCostCalculator(),
             new SpeedyCostCalculator(),
             new OverweightCostCalculator(),
+            new DiscountCostCalculator(),
         };
 
         [TestMethod]
@@ -29,6 +30,7 @@ namespace ExampleFA.Test
                 { CostType.Default, SizeCostCalculator.SMALL_PARCEL_COST },
                 { CostType.Speedy, 0 },
                 { CostType.Overweight, null }, // Weight not set, expect no overwight cost set as well
+                { CostType.Discount, DiscountCostCalculator.HARD_CODE_DISCOUNT },
             };
 
             await calc.ApplyCost(parcel);
@@ -51,6 +53,7 @@ namespace ExampleFA.Test
                 { CostType.Default, SizeCostCalculator.SMALL_PARCEL_COST },
                 { CostType.Speedy, SizeCostCalculator.SMALL_PARCEL_COST },
                 { CostType.Overweight, null }, // Weight not set, expect no overwight cost set as well
+                { CostType.Discount, DiscountCostCalculator.HARD_CODE_DISCOUNT },
             };
 
             await calc.ApplyCost(parcel);
@@ -72,6 +75,7 @@ namespace ExampleFA.Test
                 { CostType.Default, SizeCostCalculator.MEDIUM_PARCEL_COST },
                 { CostType.Speedy, 0 },
                 { CostType.Overweight, null }, // Weight not set, expect no overwight cost set as well
+                { CostType.Discount, DiscountCostCalculator.HARD_CODE_DISCOUNT },
             };
 
             await calc.ApplyCost(parcel);
@@ -93,6 +97,7 @@ namespace ExampleFA.Test
                 { CostType.Default, SizeCostCalculator.MEDIUM_PARCEL_COST },
                 { CostType.Speedy, 0 },
                 { CostType.Overweight, null }, // Weight not set, expect no overwight cost set as well
+                { CostType.Discount, DiscountCostCalculator.HARD_CODE_DISCOUNT },
             };
 
             await calc.ApplyCost(parcel);
@@ -114,6 +119,7 @@ namespace ExampleFA.Test
                 { CostType.Default, SizeCostCalculator.LARGE_PARCEL_COST },
                 { CostType.Speedy, 0 },
                 { CostType.Overweight, null }, // Weight not set, expect no overwight cost set as well
+                { CostType.Discount, DiscountCostCalculator.HARD_CODE_DISCOUNT },
             };
 
             await calc.ApplyCost(parcel);
@@ -135,6 +141,7 @@ namespace ExampleFA.Test
                 { CostType.Default, SizeCostCalculator.XL_PARCEL_COST },
                 { CostType.Speedy, 0 },
                 { CostType.Overweight, null }, // Weight not set, expect no overwight cost set as well
+                { CostType.Discount, DiscountCostCalculator.HARD_CODE_DISCOUNT },
             };
 
             await calc.ApplyCost(parcel);
@@ -159,6 +166,7 @@ namespace ExampleFA.Test
                 { CostType.Default, SizeCostCalculator.XL_PARCEL_COST },
                 { CostType.Speedy, 0 },
                 { CostType.Overweight, OverweightCostCalculator.COST_PER_KG_OVERWEIGHT * (decimal)overweightKgs },
+                { CostType.Discount, DiscountCostCalculator.HARD_CODE_DISCOUNT },
             };
 
             await calc.ApplyCost(parcel);
@@ -181,6 +189,7 @@ namespace ExampleFA.Test
                 { CostType.Default, SizeCostCalculator.XL_PARCEL_COST },
                 { CostType.Speedy, 0 },
                 { CostType.Overweight, 0 }, // No charge
+                { CostType.Discount, DiscountCostCalculator.HARD_CODE_DISCOUNT },
             };
 
             await calc.ApplyCost(parcel);
