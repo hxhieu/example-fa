@@ -3,8 +3,10 @@ using ExampleFA.Model;
 
 namespace ExampleFA.Calculator
 {
-    public class SpeedyCostCalculator : ICostCalculator<Parcel>
+    public class SpeedyCostCalculator : ICostCalculator<Parcel, CostType>
     {
+        public CostType CostType => CostType.Speedy;
+
         public Task CalcCost (params Parcel[] parcels)
         {
             foreach (var parcel in parcels)
@@ -13,11 +15,11 @@ namespace ExampleFA.Calculator
                 // Missing default cost
                 if (sizeCost == null)
                 {
-                    parcel.Costs.Add(CostType.Speedy, null);
+                    parcel.Costs.Add(CostType, null);
                     continue;
                 }
                 // Make sure the calculator always populate the CostType.Speedy
-                parcel.Costs.Add(CostType.Speedy, parcel.UseSpeedy ? sizeCost : 0);
+                parcel.Costs.Add(CostType, parcel.UseSpeedy ? sizeCost : 0);
             }
 
             return Task.CompletedTask;

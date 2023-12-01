@@ -5,9 +5,9 @@ namespace ExampleFA
 {
     public class ShippingCostCalculator : IShippingCostCalculator
     {
-        private readonly List<ICostCalculator<Parcel>> _parcelCalculators = new List<ICostCalculator<Parcel>>();
+        private readonly List<ICostCalculator<Parcel, CostType>> _parcelCalculators = new List<ICostCalculator<Parcel, CostType>>();
 
-        public ShippingCostCalculator (IEnumerable<ICostCalculator<Parcel>> parcelDefaults)
+        public ShippingCostCalculator (IEnumerable<ICostCalculator<Parcel, CostType>> parcelDefaults)
         {
             if (parcelDefaults != null)
             {
@@ -15,7 +15,7 @@ namespace ExampleFA
             }
         }
 
-        public void AddCalculator (ICostCalculator<Parcel> calculator)
+        public void AddCalculator (ICostCalculator<Parcel, CostType> calculator)
         {
             _parcelCalculators.Add(calculator);
         }

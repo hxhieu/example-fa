@@ -11,6 +11,6 @@ namespace ExampleFA.Contract
         /// <returns></returns>
         Task ApplyCost (params Parcel[] parcels);
 
-        void AddCalculator(ICostCalculator<Parcel> calculator);
+        void AddCalculator(ICostCalculator<Parcel, CostType> calculator);
     }
 }

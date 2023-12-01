@@ -16,6 +16,8 @@ namespace ExampleFA.Model
 
         public bool UseSpeedy { get; set; }
 
+        public float? Weight { get; set; }
+
         /// <summary>
         /// Null means not been calculated yet
         /// </summary>
