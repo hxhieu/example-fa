@@ -19,6 +19,10 @@ namespace ExampleFA.Model
         /// </summary>
         public decimal? ShippingCost { get; set; }
 
+        public bool UseSpeedy { get; set; }
+
+        public Dictionary<CostType, decimal?> Costs { get; set; } = new Dictionary<CostType, decimal?>();
+
         // Size helpers
 
         public bool IsSmall => Dimension.X < 10 && Dimension.Y < 10 && Dimension.Z < 10;

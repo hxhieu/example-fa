@@ -10,7 +10,8 @@ namespace ExampleFA.Test
     {
         IEnumerable<ICostCalculator<CostType>> _defaultCalculators = new List<ICostCalculator<CostType>>
         {
-            new SizeCostCalculator()
+            new SizeCostCalculator(),
+            new SpeedyCostCalculator(),
         };
 
         [TestMethod]
@@ -26,6 +27,26 @@ namespace ExampleFA.Test
             await calc.ApplyCost(smallParcel);
 
             Assert.AreEqual(smallParcel.ShippingCost, expectedCost);
+        }
+
+        [TestMethod]
+        public async Task ShippingCalculator_SmallParcel_WithSpeedy ()
+        {
+            var calc = new ShippingCostCalculator(_defaultCalculators);
+            var smallParcel = new Parcel
+            {
+                Id = Guid.NewGuid().ToString(),
+                Dimension = new Vector3(5,5,5),
+                UseSpeedy = true
+            };
+            var expectedCost = new Dictionary<CostType, decimal?>
+            {
+                {CostType.Default, 3.0m },
+                {CostType.Speedy, 3.0m }
+            };
+            await calc.ApplyCost(smallParcel);
+
+            CollectionAssert.AreEquivalent(smallParcel.Costs, expectedCost);
         }
 
         [TestMethod]

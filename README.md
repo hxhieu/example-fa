@@ -11,3 +11,6 @@ Due to the scope of this quick exercise, the following assumptions are fully awa
 # Technical decisions and designs
 - For now its all simple/local cost calculations but I make everything async, so it can scale easier i.e. if costs would need to be fetched from remote etc.
 - I make generic cost calculators, to make it modular i.e. we can just add more cost calculations on top each other.
+  - Some calculators would depend on other calculators to run before
+  - For now the calculators run in the order they defined in the list
+  - Could be nicer to have a way to sort the running order

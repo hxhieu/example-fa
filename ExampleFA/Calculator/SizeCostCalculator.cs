@@ -15,8 +15,6 @@ namespace ExampleFA.Calculator
         {
             foreach (var parcel in parcels)
             {
-                var costLayout = new KeyValuePair<CostType, decimal?> (CostType.Default, null);
-                
                 // Won't be able to calculate non-set parcel's size
                 if (parcel.Dimension.Equals(Vector3.Zero))
                 {
@@ -26,18 +24,22 @@ namespace ExampleFA.Calculator
                 if (parcel.IsSmall)
                 {
                     parcel.ShippingCost = SMALL_PARCEL_COST;
+                    parcel.Costs.Add(CostType.Default, SMALL_PARCEL_COST);
                 }
                 else if (parcel.IsMedium)
                 {
                     parcel.ShippingCost = MEDIUM_PARCEL_COST;
+                    parcel.Costs.Add(CostType.Default, SMALL_PARCEL_COST);
                 }
                 else if (parcel.IsLarge)
                 {
                     parcel.ShippingCost = LARGE_PARCEL_COST;
+                    parcel.Costs.Add(CostType.Default, SMALL_PARCEL_COST);
                 }
                 else if (parcel.IsXL)
                 {
                     parcel.ShippingCost = XL_PARCEL_COST;
+                    parcel.Costs.Add(CostType.Default, SMALL_PARCEL_COST);
                 }
             }
             
