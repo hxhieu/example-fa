@@ -1,3 +1,7 @@
+# Example FA
+
+![build badge](https://github.com/hxhieu/example-fa/actions/workflows/code-build.yml/badge.svg)
+
 # Assumptions
 Due to the scope of this quick exercise, the following assumptions are fully aware of but will not be addressed immediately
 
