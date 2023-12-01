@@ -12,7 +12,7 @@ namespace ExampleFA.Test
         {
             new SizeCostCalculator(),
             new SpeedyCostCalculator(),
-             //new OverweightCostCalculator(),
+            new OverweightCostCalculator(),
         };
 
         [TestMethod]
@@ -28,6 +28,7 @@ namespace ExampleFA.Test
             {
                 { CostType.Default, SizeCostCalculator.SMALL_PARCEL_COST },
                 { CostType.Speedy, 0 },
+                { CostType.Overweight, null },
             };
             await calc.ApplyCost(parcel);
 
@@ -46,8 +47,9 @@ namespace ExampleFA.Test
             };
             var expectedCost = new Dictionary<CostType, decimal?>
             {
-                {CostType.Default, SizeCostCalculator.SMALL_PARCEL_COST },
-                {CostType.Speedy, SizeCostCalculator.SMALL_PARCEL_COST }
+                { CostType.Default, SizeCostCalculator.SMALL_PARCEL_COST },
+                { CostType.Speedy, SizeCostCalculator.SMALL_PARCEL_COST },
+                { CostType.Overweight, null },
             };
             await calc.ApplyCost(parcel);
 
@@ -67,6 +69,7 @@ namespace ExampleFA.Test
             {
                 { CostType.Default, SizeCostCalculator.MEDIUM_PARCEL_COST },
                 { CostType.Speedy, 0 },
+                { CostType.Overweight, null },
             };
             await calc.ApplyCost(parcel);
 
@@ -86,6 +89,7 @@ namespace ExampleFA.Test
             {
                 { CostType.Default, SizeCostCalculator.MEDIUM_PARCEL_COST },
                 { CostType.Speedy, 0 },
+                { CostType.Overweight, null },
             };
             await calc.ApplyCost(parcel);
 
@@ -105,6 +109,7 @@ namespace ExampleFA.Test
             {
                 { CostType.Default, SizeCostCalculator.LARGE_PARCEL_COST },
                 { CostType.Speedy, 0 },
+                { CostType.Overweight, null },
             };
             await calc.ApplyCost(parcel);
 
@@ -124,6 +129,7 @@ namespace ExampleFA.Test
             {
                 { CostType.Default, SizeCostCalculator.XL_PARCEL_COST },
                 { CostType.Speedy, 0 },
+                { CostType.Overweight, null },
             };
             await calc.ApplyCost(parcel);
 
