@@ -3,7 +3,7 @@ using ExampleFA.Model;
 
 namespace ExampleFA.Calculator
 {
-    public class SpeedyCostCalculator : ICostCalculator<CostType>
+    public class SpeedyCostCalculator : ICostCalculator<Parcel>
     {
         public Task CalcCost (params Parcel[] parcels)
         {

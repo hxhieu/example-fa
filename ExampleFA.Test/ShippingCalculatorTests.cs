@@ -8,10 +8,11 @@ namespace ExampleFA.Test
     [TestClass]
     public class ShippingCalculatorTests
     {
-        IEnumerable<ICostCalculator<CostType>> _defaultCalculators = new List<ICostCalculator<CostType>>
+        IEnumerable<ICostCalculator<Parcel>> _defaultCalculators = new List<ICostCalculator<Parcel>>
         {
             new SizeCostCalculator(),
             new SpeedyCostCalculator(),
+            // new OverweightCostCalculator(),
         };
 
         [TestMethod]

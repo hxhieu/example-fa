@@ -4,7 +4,7 @@ using System.Numerics;
 
 namespace ExampleFA.Calculator
 {
-    public class SizeCostCalculator : ICostCalculator<CostType>
+    public class SizeCostCalculator : ICostCalculator<Parcel>
     {
         public const decimal SMALL_PARCEL_COST = 3.0m;
         public const decimal  MEDIUM_PARCEL_COST = 8.0m;
