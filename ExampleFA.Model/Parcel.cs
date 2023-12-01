@@ -14,13 +14,11 @@ namespace ExampleFA.Model
         /// </summary>
         public Vector3 Dimension { get; set; }
 
+        public bool UseSpeedy { get; set; }
+
         /// <summary>
         /// Null means not been calculated yet
         /// </summary>
-        public decimal? ShippingCost { get; set; }
-
-        public bool UseSpeedy { get; set; }
-
         public Dictionary<CostType, decimal?> Costs { get; set; } = new Dictionary<CostType, decimal?>();
 
         // Size helpers

@@ -6,10 +6,10 @@ namespace ExampleFA.Calculator
 {
     public class SizeCostCalculator : ICostCalculator<CostType>
     {
-        const decimal SMALL_PARCEL_COST = 3.0m;
-        const decimal MEDIUM_PARCEL_COST = 8.0m;
-        const decimal LARGE_PARCEL_COST = 15.0m;
-        const decimal XL_PARCEL_COST = 25.0m;
+        public const decimal SMALL_PARCEL_COST = 3.0m;
+        public const decimal  MEDIUM_PARCEL_COST = 8.0m;
+        public const decimal  LARGE_PARCEL_COST = 15.0m;
+        public const decimal  XL_PARCEL_COST = 25.0m;
 
         public Task CalcCost (params Parcel[] parcels)
         {
@@ -18,31 +18,33 @@ namespace ExampleFA.Calculator
                 // Won't be able to calculate non-set parcel's size
                 if (parcel.Dimension.Equals(Vector3.Zero))
                 {
+                    parcel.Costs.Add(CostType.Default, null);
                     continue;
                 }
 
                 if (parcel.IsSmall)
                 {
-                    parcel.ShippingCost = SMALL_PARCEL_COST;
                     parcel.Costs.Add(CostType.Default, SMALL_PARCEL_COST);
                 }
                 else if (parcel.IsMedium)
                 {
-                    parcel.ShippingCost = MEDIUM_PARCEL_COST;
-                    parcel.Costs.Add(CostType.Default, SMALL_PARCEL_COST);
+                    parcel.Costs.Add(CostType.Default, MEDIUM_PARCEL_COST);
                 }
                 else if (parcel.IsLarge)
                 {
-                    parcel.ShippingCost = LARGE_PARCEL_COST;
-                    parcel.Costs.Add(CostType.Default, SMALL_PARCEL_COST);
+                    parcel.Costs.Add(CostType.Default, LARGE_PARCEL_COST);
                 }
                 else if (parcel.IsXL)
                 {
-                    parcel.ShippingCost = XL_PARCEL_COST;
-                    parcel.Costs.Add(CostType.Default, SMALL_PARCEL_COST);
+                    parcel.Costs.Add(CostType.Default, XL_PARCEL_COST);
+                }
+                else
+                {
+                    // Undetermined size
+                    parcel.Costs.Add(CostType.Default, null);
                 }
             }
-            
+
             return Task.CompletedTask;
         }
     }

@@ -13,6 +13,7 @@ namespace ExampleFA.Calculator
                 // Missing default cost or not using Speedy
                 if (sizeCost == null || !parcel.UseSpeedy)
                 {
+                    parcel.Costs.Add(CostType.Speedy, null);
                     continue;
                 }
                 parcel.Costs.Add(CostType.Speedy, sizeCost);

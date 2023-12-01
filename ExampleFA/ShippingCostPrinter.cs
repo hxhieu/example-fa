@@ -9,7 +9,7 @@ namespace ExampleFA
         {
             return Task.FromResult(new ShippingCostLayout
             {
-                Items = parcels.ToDictionary(x => x.Id, x => x.ShippingCost)
+                //Items = parcels.ToDictionary(x => x.Id, x => x.ShippingCost)
             });
         }
     }

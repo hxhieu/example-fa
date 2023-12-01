@@ -18,22 +18,26 @@ namespace ExampleFA.Test
         public async Task ShippingCalculator_SmallParcel_True ()
         {
             var calc = new ShippingCostCalculator(_defaultCalculators);
-            var smallParcel = new Parcel
+            var parcel = new Parcel
             {
                 Id = Guid.NewGuid().ToString(),
                 Dimension = new Vector3(5,5,5),
             };
-            var expectedCost = 3.0m;
-            await calc.ApplyCost(smallParcel);
+            var expectedCost = new Dictionary<CostType,decimal?>
+            {
+                { CostType.Default, SizeCostCalculator.SMALL_PARCEL_COST },
+                { CostType.Speedy, null },
+            };
+            await calc.ApplyCost(parcel);
 
-            Assert.AreEqual(smallParcel.ShippingCost, expectedCost);
+            CollectionAssert.AreEquivalent(parcel.Costs, expectedCost);
         }
 
         [TestMethod]
         public async Task ShippingCalculator_SmallParcel_WithSpeedy ()
         {
             var calc = new ShippingCostCalculator(_defaultCalculators);
-            var smallParcel = new Parcel
+            var parcel = new Parcel
             {
                 Id = Guid.NewGuid().ToString(),
                 Dimension = new Vector3(5,5,5),
@@ -41,72 +45,88 @@ namespace ExampleFA.Test
             };
             var expectedCost = new Dictionary<CostType, decimal?>
             {
-                {CostType.Default, 3.0m },
-                {CostType.Speedy, 3.0m }
+                {CostType.Default, SizeCostCalculator.SMALL_PARCEL_COST },
+                {CostType.Speedy, SizeCostCalculator.SMALL_PARCEL_COST }
             };
-            await calc.ApplyCost(smallParcel);
+            await calc.ApplyCost(parcel);
 
-            CollectionAssert.AreEquivalent(smallParcel.Costs, expectedCost);
+            CollectionAssert.AreEquivalent(parcel.Costs, expectedCost);
         }
 
         [TestMethod]
         public async Task ShippingCalculator_SmallParcel_NotAllDimensions ()
         {
             var calc = new ShippingCostCalculator(_defaultCalculators);
-            var smallParcel = new Parcel
+            var parcel = new Parcel
             {
                 Id = Guid.NewGuid().ToString(),
                 Dimension = new Vector3(5,5,15),
             };
-            var expectedCost = 3.0m;
-            await calc.ApplyCost(smallParcel);
+            var expectedCost = new Dictionary<CostType,decimal?>
+            {
+                { CostType.Default, SizeCostCalculator.MEDIUM_PARCEL_COST },
+                { CostType.Speedy, null },
+            };
+            await calc.ApplyCost(parcel);
 
-            Assert.AreNotEqual(smallParcel.ShippingCost, expectedCost);
+            CollectionAssert.AreEquivalent(parcel.Costs, expectedCost);
         }
 
         [TestMethod]
         public async Task ShippingCalculator_MediumParcel_True ()
         {
             var calc = new ShippingCostCalculator(_defaultCalculators);
-            var smallParcel = new Parcel
+            var parcel = new Parcel
             {
                 Id = Guid.NewGuid().ToString(),
                 Dimension = new Vector3(45,15,25),
             };
-            var expectedCost = 8.0m;
-            await calc.ApplyCost(smallParcel);
+            var expectedCost = new Dictionary<CostType,decimal?>
+            {
+                { CostType.Default, SizeCostCalculator.MEDIUM_PARCEL_COST },
+                { CostType.Speedy, null },
+            };
+            await calc.ApplyCost(parcel);
 
-            Assert.AreEqual(smallParcel.ShippingCost, expectedCost);
+            CollectionAssert.AreEquivalent(parcel.Costs, expectedCost);
         }
 
         [TestMethod]
         public async Task ShippingCalculator_LargeParcel_True ()
         {
             var calc = new ShippingCostCalculator(_defaultCalculators);
-            var smallParcel = new Parcel
+            var parcel = new Parcel
             {
                 Id = Guid.NewGuid().ToString(),
                 Dimension = new Vector3(50,15,25),
             };
-            var expectedCost = 15.0m;
-            await calc.ApplyCost(smallParcel);
+            var expectedCost = new Dictionary<CostType,decimal?>
+            {
+                { CostType.Default, SizeCostCalculator.LARGE_PARCEL_COST },
+                { CostType.Speedy, null },
+            };
+            await calc.ApplyCost(parcel);
 
-            Assert.AreEqual(smallParcel.ShippingCost, expectedCost);
+            CollectionAssert.AreEquivalent(parcel.Costs, expectedCost);
         }
 
         [TestMethod]
         public async Task ShippingCalculator_XLParcel_True ()
         {
             var calc = new ShippingCostCalculator(_defaultCalculators);
-            var smallParcel = new Parcel
+            var parcel = new Parcel
             {
                 Id = Guid.NewGuid().ToString(),
                 Dimension = new Vector3(110,100,50),
             };
-            var expectedCost = 25.0m;
-            await calc.ApplyCost(smallParcel);
+            var expectedCost = new Dictionary<CostType,decimal?>
+            {
+                { CostType.Default, SizeCostCalculator.XL_PARCEL_COST },
+                { CostType.Speedy, null },
+            };
+            await calc.ApplyCost(parcel);
 
-            Assert.AreEqual(smallParcel.ShippingCost, expectedCost);
+            CollectionAssert.AreEquivalent(parcel.Costs, expectedCost);
         }
     }
 }
