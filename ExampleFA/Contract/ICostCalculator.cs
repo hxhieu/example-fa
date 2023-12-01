@@ -1,9 +1,10 @@
-﻿using ExampleFA.Model;
-
-namespace ExampleFA.Contract
+﻿namespace ExampleFA.Contract
 {
-    public interface ICostCalculator<T> where T : struct, Enum
+    public interface ICostCalculator<T, TCost>
+        where T : class
+        where TCost : struct, Enum
     {
-        Task CalcCost (params Parcel[] parcels);
+        TCost CostType { get; }
+        Task CalcCost (params T[] items);
     }
 }

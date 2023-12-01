@@ -3,6 +3,7 @@
     public enum CostType
     {
         Default,
-        Speedy
+        Speedy,
+        Overweight
     }
 }

@@ -5,24 +5,24 @@ namespace ExampleFA
 {
     public class ShippingCostCalculator : IShippingCostCalculator
     {
-        private readonly List<ICostCalculator<CostType>> _calculators = new List<ICostCalculator<CostType>>();
+        private readonly List<ICostCalculator<Parcel, CostType>> _parcelCalculators = new List<ICostCalculator<Parcel, CostType>>();
 
-        public ShippingCostCalculator (IEnumerable<ICostCalculator<CostType>> defaults)
+        public ShippingCostCalculator (IEnumerable<ICostCalculator<Parcel, CostType>> parcelDefaults)
         {
-            if (defaults != null)
+            if (parcelDefaults != null)
             {
-                _calculators.AddRange(defaults);
+                _parcelCalculators.AddRange(parcelDefaults);
             }
         }
 
-        public void AddCalculator (ICostCalculator<CostType> calculator)
+        public void AddCalculator (ICostCalculator<Parcel, CostType> calculator)
         {
-            _calculators.Add(calculator);
+            _parcelCalculators.Add(calculator);
         }
 
         public async Task ApplyCost (params Parcel[] parcels)
         {
-            foreach (var calc in _calculators)
+            foreach (var calc in _parcelCalculators)
             {
                 await calc.CalcCost(parcels);
             }
